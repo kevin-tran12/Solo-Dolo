@@ -18,11 +18,17 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
+      monies: {
+        type: DataTypes.INTEGER,
+        validate:{
+          min: 0
+        }
+      },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
-        isEmail: true,
         validate: {
+          isEmail: true,
           len: [3, 256],
         },
       },
@@ -90,7 +96,8 @@ module.exports = (sequelize, DataTypes) => {
   };
   
   User.associate = function (models) {
-    // associations can be defined here
+    User.hasMany(models.Ticket, {foreignKey:'userId'})
+    User.hasMany(models.Event, {through:'Bookmark',otherKey:'eventId',foreignKey:'userId'})
   };
   return User;
 };
