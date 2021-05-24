@@ -9,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
     eventId: DataTypes.INTEGER
   }, {});
   Ticket.associate = function(models) {
-    Ticket.belongsToMany(models.Event, {foreignKey:'eventId'})
-    Ticket.belongsToMany(models.User, {foreignKey:'userId'})
+    Ticket.belongsTo(models.Event, {foreignKey:'eventId'})
+    Ticket.belongsTo(models.User, {foreignKey:'userId'})
   };
   return Ticket;
 };
