@@ -6,10 +6,19 @@ const {Bookmark,Category,Event,Ticket,User,Venue} = require('../../db/models')
 router.get('', asyncHandler(async(req,res) =>{
     const events = await Event.findAll({
         include:[
-            {model:Category}]
+            {model:Category,
+            attributes:["genre"],
+            require:true},
+            {model:Venue,
+            attributes:["name", "city","capacity"],
+            require:true}
+        ]
     })
-    // console.log(events)
     return res.json({events})
 }))
-
+router.get('/event/:id', asyncHandler(async(req,res) =>{
+    const eventId = parseInt(req.params.id)
+    const events = await Event.findOne({where:{id:movieId}})
+    return res.json(events)
+}))
 module.exports = router

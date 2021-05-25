@@ -8,26 +8,31 @@ export default function Event() {
   const dispatch = useDispatch();
   
   const events = useSelector((state) => Object.values(state.events));
-  
+
   useEffect(() => {
     dispatch(getEvents());
   }, [dispatch]);
 
-
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Venue</th>
-          </tr>
-        </thead>
-        <tbody>
-          {events.map((event) => <EventRow key={event.id} event={event} />)}
-        </tbody>
-      </table>
+    <div className='events'>
+      <div>
+        <h2 className='heading'>Events</h2>
+         <table className='tables'>
+           <thead>
+             <tr>
+               <th>Name</th>
+               <th>description</th>
+               <th>Genre</th>
+               <th>Venue</th>
+               <th>City</th>
+               <th>Capacity</th>
+             </tr>
+           </thead>
+           <tbody>
+             {events.map((event) => <EventRow key={event.id} event={event} />)}
+           </tbody>
+         </table>
+      </div>
     </div>
   );
 };

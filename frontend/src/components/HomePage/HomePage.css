@@ -1,0 +1,16 @@
+.events{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.tables{
+    font-size: 30px;
+    border: 1px solid black;
+    width: fit-content;
+    margin: auto;
+    border-radius: .25rem;
+}
+td{
+    border: 1px solid black;
+}
