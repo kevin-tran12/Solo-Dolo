@@ -16,6 +16,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(300)
       },
+      date: {
+        allowNull: false,
+        type: Sequelize.DATEONLY
+      },
       categoryId: {
         allowNull: false,
         type: Sequelize.INTEGER,

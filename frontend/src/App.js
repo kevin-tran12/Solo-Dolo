@@ -6,6 +6,8 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import PageNotFound from "./components/PageNotFound"
 import HomePage from "./components/HomePage"
+import EventPage from "./components/EventPage";
+import Footer from "./components/Footer";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -24,11 +26,15 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route path="/event/:id">
+            <EventPage />
+          </Route>
           <Route>
             <PageNotFound />
           </Route>
         </Switch>
       )}
+      <Footer/>
     </>
   );
 }

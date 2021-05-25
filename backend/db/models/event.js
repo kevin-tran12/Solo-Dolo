@@ -4,7 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     description: DataTypes.STRING,
     categoryId: DataTypes.INTEGER,
-    venueId: DataTypes.INTEGER
+    venueId: DataTypes.INTEGER,
+    date: DataTypes.DATEONLY
   }, {});
   Event.associate = function(models) {
     Event.hasMany(models.Ticket, {foreignKey:'eventId'})
