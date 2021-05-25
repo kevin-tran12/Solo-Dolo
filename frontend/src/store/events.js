@@ -11,7 +11,7 @@ export const getEvents = () => async dispatch => {
   const response = await csrfFetch(`/api/events`);
   if (!response.ok) return
     const events = await response.json();
-    console.log(events)
+    // console.log(events)
     dispatch(loadEvents(events))
 }
 

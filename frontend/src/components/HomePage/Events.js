@@ -6,19 +6,22 @@ import EventRow from '../EventRow';
 
 export default function Event() {
   const dispatch = useDispatch();
+  
+  const events = useSelector((state) => Object.values(state.events));
+  
   useEffect(() => {
     dispatch(getEvents());
   }, [dispatch]);
-  const events = useSelector((state) => Object.values(state.events));
+
 
   return (
     <div>
       <table>
         <thead>
           <tr>
-            <th>User No.</th>
-            <th>User's Name</th>
-            <th>User's Email</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Venue</th>
           </tr>
         </thead>
         <tbody>
