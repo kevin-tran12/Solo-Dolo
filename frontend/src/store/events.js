@@ -9,30 +9,24 @@ const loadEvents = events => ({
 
 export const getEvents = () => async dispatch => {
   const response = await csrfFetch(`/api/events`);
-
-  if (response.ok) {
+  if (!response.ok) return
     const events = await response.json();
-    dispatch(loadEvents(events));
-  }
-};
+    console.log(events)
+    dispatch(loadEvents(events))
+}
 
-const initialState = {
-  events:{}
-};
+const initialState = {};
 
 
 
 const eventsReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_ALL: {
-      const all = {};
+      const newState = {...state}
       action.events.events.forEach(event => {
-        all[event.id] = event;
+        newState[event.id] = event
       });
-      return {
-        ...state,
-        events:{...all},
-      };
+      return newState
     }
     default:
       return state;
