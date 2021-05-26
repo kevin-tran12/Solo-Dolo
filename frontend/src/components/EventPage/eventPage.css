@@ -7,16 +7,15 @@
 
 .tables{
     background-color: #222;
-    font-size: 30px;
     border: 1px solid black;
-    width: fit-content;
+    width: 100%;
     margin: auto;
-    border-radius: .25rem;
     margin-top: 0;
 }
 
 td{
     border: 1px solid black;
+    overflow-wrap: none;
 }
 
 th{
@@ -39,6 +38,7 @@ h1{
 
 .table-elements{
     background-color: #222;
+    width: max-content;
 }
 
 .button-container{

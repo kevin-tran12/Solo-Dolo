@@ -9,6 +9,7 @@ const {
   User,
   Venue,
 } = require("../../db/models");
+const { requireAuth } = require("../../utils/auth");
 
 router.get(
   "",
@@ -47,4 +48,33 @@ router.get(
   })
 );
 
+router.get(
+  "/bookmarks/:id", requireAuth,
+  asyncHandler(async (req, res) => {
+    const id = parseInt(req.params.id);
+    const bookmark = await Bookmark.findAll({
+      where:{userId:id},
+    })
+    return res.json(bookmark);
+  })
+);
+
+router.post(
+  "/:id/bookmarks", requireAuth,
+  asyncHandler(async (req, res) => {
+    const {eventId, userId} = req.body
+    const creating = {eventId,userId}
+    const bookmark = await Bookmark.create(creating)
+
+  })
+);
+
+router.delete(
+  "/:id/bookmarks", requireAuth,
+  asyncHandler(async (req, res) => {
+    const {eventId, userId} = req.body
+    const bookmark = await Bookmark.destroy({where:{eventId,userId}})
+
+  })
+);
 module.exports = router;

@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Event.associate = function(models) {
     Event.hasMany(models.Ticket, {foreignKey:'eventId'})
-    Event.belongsToMany(models.User, {through:'Bookmark',otherKey:'userId',foreignKey:'eventId'})
+    Event.belongsToMany(models.User, {through:'Bookmark',foreignKey:'eventId'})
     Event.belongsTo(models.Category, {foreignKey:'categoryId'})
     Event.belongsTo(models.Venue, {foreignKey:'venueId'})
   };

@@ -21,14 +21,16 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/" className='font'>
-          <i class="fas fa-home"></i>
-        </NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    <div className='navigation'>
+      <ul>
+        <li>
+          <NavLink exact to="/" className='nav-buttons'>
+            <i class="fas fa-home"></i>
+          </NavLink>
+          {isLoaded && sessionLinks}
+        </li>
+      </ul>
+    </div>
   );
 }
 

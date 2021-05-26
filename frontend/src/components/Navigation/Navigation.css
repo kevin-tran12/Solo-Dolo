@@ -6,15 +6,19 @@
 
 .navigation{
     display: flex;
-    flex-direction:column;
-    justify-content: space-around;
+    flex-direction:row;
+    align-content: center;
 }
 link{
     border: black;
 }
 
 .nav-buttons{
-    background-color: dimgray;
+    background-color: lightgray;
+    border: 1px solid gray;
+    height: auto;
+    width: auto;
+    margin-top: 5px;
 }
 
 
