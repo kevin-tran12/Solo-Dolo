@@ -17,7 +17,6 @@ export default function EventPage() {
   const userId = useSelector((state) => state.session.user.id);
   const eventId = parseInt(id);
   const states = useSelector((state) => state);
-  console.log(states,'states')
 
   const [save, setSave] = useState(true);
   
@@ -28,7 +27,6 @@ export default function EventPage() {
   useEffect(() => {
     dispatch(getBookmarks(userId));
   }, [dispatch]);
-  console.log(save);
 
   const bookmark = () => dispatch(addOneBookmark({ eventId, userId }));
   const deleteBookmark = () => dispatch(deleteOneBookmark({ eventId, userId }));

@@ -66,6 +66,7 @@ router.post(
     const creating = {eventId,userId}
     const bookmark = await Bookmark.create(creating)
 
+    return res.json(bookmark)
   })
 );
 

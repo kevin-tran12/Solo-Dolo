@@ -90,8 +90,6 @@ const initialState = {};
 
 
 const eventsReducer = (state = initialState, action) => {
-  console.log(action,'action')
-  console.log(state,'state')
   switch (action.type) {
     case LOAD_ALL: {
       const newState = {...state}
@@ -114,10 +112,13 @@ const eventsReducer = (state = initialState, action) => {
       return newState
     }    
     case ADD_BOOKMARK: {
-      const newState ={
-        ...state,
-        [action.bookmark.id]: action.bookmark
-      }
+      if(state[action.bookmark.id]) return
+      console.log('adding this')
+      console.log(action)
+        const newState = {
+          ...state,
+          [action.bookmark.id]: action.bookmark,
+        }
       return newState
     }
     case DELETE_BOOKMARK: {

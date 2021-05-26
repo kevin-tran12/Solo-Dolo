@@ -6,8 +6,7 @@ import { getBookmarks } from "../../store/events";
 export default function BookmarkPage() {
   const dispatch = useDispatch();
   const userId = useSelector(state => state.session.user.id)
-  const bookmarks = useSelector((state) => state.events.bookmarks);
-console.log(bookmarks)
+  const bookmarks = useSelector((state) => console.log());
   useEffect(() => {
     dispatch(getBookmarks(userId));
   }, [dispatch]);
