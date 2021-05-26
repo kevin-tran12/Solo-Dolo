@@ -49,33 +49,46 @@ router.get(
 );
 
 router.get(
-  "/bookmarks/:id", requireAuth,
+  "/bookmarks/:id",
+  requireAuth,
   asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id);
     const bookmark = await Bookmark.findAll({
-      where:{userId:id},
-    })
+      where: { userId: id },
+      include: [
+        {
+          model: Event,
+          include: [
+            { model: Category },
+            {
+              model: Venue,
+            },
+          ],
+        },
+      ],
+    });
     return res.json(bookmark);
   })
 );
 
 router.post(
-  "/:id/bookmarks", requireAuth,
+  "/:id/bookmarks",
+  requireAuth,
   asyncHandler(async (req, res) => {
-    const {eventId, userId} = req.body
-    const creating = {eventId,userId}
-    const bookmark = await Bookmark.create(creating)
+    const { eventId, userId } = req.body;
+    const creating = { eventId, userId };
+    const bookmark = await Bookmark.create(creating);
 
-    return res.json(bookmark)
+    return res.json(bookmark);
   })
 );
 
 router.delete(
-  "/:id/bookmarks", requireAuth,
+  "/:id/bookmarks",
+  requireAuth,
   asyncHandler(async (req, res) => {
-    const {eventId, userId} = req.body
-    const bookmark = await Bookmark.destroy({where:{eventId,userId}})
-
+    const { eventId, userId } = req.body;
+    const bookmark = await Bookmark.destroy({ where: { eventId, userId } });
   })
 );
 module.exports = router;

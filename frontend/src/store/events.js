@@ -3,7 +3,7 @@ import {csrfFetch} from './csrf'
 const LOAD_ALL = 'events/ALL';
 const LOAD_ONE = 'events/ONE'
 
-const LOAD_BOOKMARK = 'events/BOOKMARK'
+const LOAD_BOOKMARK = 'events/LOAD_BOOKMARK'
 const ADD_BOOKMARK = 'events/ADD_BOOKMARK'
 const DELETE_BOOKMARK = 'events/DELETE_BOOKMARK'
 
@@ -56,8 +56,8 @@ export const getBookmarks = id => async dispatch => {
 }
 
 export const deleteOneBookmark = payload => async dispatch => {
+  console.log('deleting',payload)
   const {userId, eventId} = payload
-  console.log('deleting')
   const response = await csrfFetch(`/api/events/${eventId}/bookmarks`,{
     method: 'DELETE',
     body: JSON.stringify({eventId, userId})
@@ -69,7 +69,6 @@ export const deleteOneBookmark = payload => async dispatch => {
 
 export const addOneBookmark = payload => async dispatch => {
   const {userId, eventId} = payload
-  console.log('adding')
   const response = await csrfFetch(`/api/events/${eventId}/bookmarks`,{
     method: 'POST',
     headers:{'Content-Type': 'application/json'},
@@ -109,12 +108,12 @@ const eventsReducer = (state = initialState, action) => {
       action.bookmark.forEach(bookmark => {
         newState[bookmark.id] = bookmark
       });
-      return newState
+      return {...newState,
+        bookmark:action.bookmark
+      }
     }    
     case ADD_BOOKMARK: {
       if(state[action.bookmark.id]) return
-      console.log('adding this')
-      console.log(action)
         const newState = {
           ...state,
           [action.bookmark.id]: action.bookmark,

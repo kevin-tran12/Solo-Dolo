@@ -38,7 +38,7 @@ function ProfileButton({ user }) {
           <li className="drop-down">{user.username}</li>
           <li className="drop-down">{user.email}</li>
           <li>
-            <Link to={`/profile/${user.id}`}><button className='nav-buttons'>Profile</button></Link>
+            <Link to={`/bookmarks/${user.id}`}><button className='nav-buttons'>Profile</button></Link>
           </li>
           <li>
             <button onClick={logout} className="nav-buttons">

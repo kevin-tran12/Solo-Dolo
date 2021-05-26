@@ -30,7 +30,7 @@ function App() {
           <Route path="/event/:id">
             <EventPage />
           </Route>
-          <Route path="/bookmarks">
+          <Route path="/bookmarks/:id">
             <BookmarkPage />
           </Route>
           <Route>
