@@ -22,13 +22,13 @@ const EventRow = ( {event} ) => {
   // }
   return (
       <tr className='table-elements'>
-      <td className='table-elements'><NavLink to={`/event/${event.id}`} className='table-elements'>{event.name}</NavLink></td>
-      <td className='table-elements'>{event.description}</td>
-      <td className='table-elements'>{event.date}</td>
-      <td className='table-elements'>{event.Category.genre}</td>
-      <td className='table-elements'>{event.Venue.name}</td>
-      <td className='table-elements'>{event.Venue.city}</td>
-      <td className='table-elements'>{event.Venue.capacity}</td>
+        <td className='table-elements'><NavLink to={`/event/${event.id}`} className='table-elements'>{event.name}</NavLink></td>
+        <td className='table-elements'>{event.description}</td>
+        <td className='table-elements'>{event.date}</td>
+        <td className='table-elements'>{event.Category.genre}</td>
+        <td className='table-elements'>{event.Venue.name}</td>
+        <td className='table-elements'>{event.Venue.city}</td>
+        <td className='table-elements'>{event.Venue.capacity}</td>
       </tr>
   )
 }

@@ -8,7 +8,7 @@ import PageNotFound from "./components/PageNotFound"
 import HomePage from "./components/HomePage"
 import EventPage from "./components/EventPage";
 import Footer from "./components/Footer";
-import BookmarkPage from "./components/BookmarkPage";
+import ProfilePage from './components/ProfilePage'
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -31,7 +31,7 @@ function App() {
             <EventPage />
           </Route>
           <Route path="/bookmarks/:id">
-            <BookmarkPage />
+            <ProfilePage />
           </Route>
           <Route>
             <PageNotFound />

@@ -6,7 +6,7 @@
 
 .navigation{
     display: flex;
-    flex-direction:row;
+    flex-direction:column;
     align-content: center;
 }
 link{
@@ -19,12 +19,17 @@ link{
     height: auto;
     width: auto;
     margin-top: 5px;
+    color: black;
 }
 
 
 
-.font{
-    margin: 1rem;
-    width: 2rem;
-    height: 2rem;
+
+.nav{
+    display: flex;
+    flex-direction: column;
+}
+.fas{
+    margin: 0;
+    padding: 0;
 }

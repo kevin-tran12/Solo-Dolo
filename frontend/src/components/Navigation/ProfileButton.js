@@ -30,8 +30,8 @@ function ProfileButton({ user }) {
 
   return (
     <div className="navigation">
-      <button onClick={openMenu} className="nav-buttons font">
-        <i class="fas fa-user-ninja"></i>
+      <button onClick={openMenu} className=" font">
+        <i className="fas fa-user-ninja"></i>
       </button>
       {showMenu && (
         <ul className="profile-dropdown drop-down">
