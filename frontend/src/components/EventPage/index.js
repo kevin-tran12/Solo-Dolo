@@ -8,40 +8,49 @@ import {
   getEvent,
 } from "../../store/events";
 import EventRow from "../EventRow";
+import PageNotFound from "../PageNotFound";
 import "./eventPage.css";
 
 export default function EventPage() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const event = useSelector((state) => state.events.current);
-  const userId = useSelector((state) => state.session.user.id);
+  const session = useSelector((state) => state.session.user);
+  let userId
   const eventId = parseInt(id);
-
   const [save, setSave] = useState(true);
   
   useEffect(() => {
     dispatch(getEvent(id));
   }, [dispatch, id]);
-
+  
   useEffect(() => {
     dispatch(getBookmarks(userId));
   }, [dispatch]);
-
+  let buttonText = 'Thinking about it? Save it!';
+  
+  useEffect(() =>{
+    if(save)buttonText='Thinking about it? Save it!'
+    if(!save)buttonText='Delete'
+  },[save])
+  if(session) userId = session.id
+  if(!session)return PageNotFound()
   const bookmark = () => dispatch(addOneBookmark({ eventId, userId }));
   const deleteBookmark = () => dispatch(deleteOneBookmark({ eventId, userId }));
+
+
   const saving = () => {
     if (save) {
-      bookmark()
+      bookmark();
       return setSave(!save);
     }
-    if (!save){
-    deleteBookmark();
-    return setSave(!save);
+    if (!save) {
+      deleteBookmark();
+      return setSave(!save);
     }
   };
-
+  console.log(buttonText)
   if (!event) return null;
-
   return (
     <div className="container">
       <h1>{`Price $${event.Tickets[0].price}`}</h1>

@@ -1,18 +1,18 @@
 import { useLocation } from "react-router-dom";
 import {NavLink} from 'react-router-dom'
 const EventRow = ( {event} ) => {
-  // const queryString = new URLSearchParams(useLocation().search).get("q") ?? "";
-  //   if (
-  //     !(
-  //       event.name.includes(queryString) ||
-  //       event.description.includes(queryString) ||
-  //       String(event.id).includes(queryString) ||
-  //       event.Category.includes(queryString)||
-  //       event.Venue.includes(queryString)
-  //       )
-  //       ) {
-  //         return null;
-  //       }
+  const queryString = new URLSearchParams(useLocation().search).get("q") ?? "";
+    if (
+      !(
+        event.name.includes(queryString) ||
+        event.description.includes(queryString) ||
+        String(event.id).includes(queryString) ||
+        event.Category.includes(queryString)||
+        event.Venue.includes(queryString)
+        )
+        ) {
+          return null;
+        }
 
   // let tickets
   // if(event.Tickets){

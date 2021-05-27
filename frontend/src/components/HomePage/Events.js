@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import { getEvents } from "../../store/events";
-import EventRow from "../EventRow";
+
 
 export default function Event() {
   const dispatch = useDispatch();
@@ -35,14 +35,14 @@ export default function Event() {
       </tr>
       </thead>
       <tbody>
-      {events.map((event) => (<tr className='table-elements'>
-      <td className='table-elements'><NavLink to={`/event/${event.id}`} className='table-elements'>{event.name}</NavLink></td>
-      <td className='table-elements'>{event.description}</td>
-      <td className='table-elements'>{event.date}</td>
-      <td className='table-elements'>{event.Category.genre}</td>
-      <td className='table-elements'>{event.Venue.name}</td>
-      <td className='table-elements'>{event.Venue.city}</td>
-      <td className='table-elements'>{event.Venue.capacity}</td>
+      {events?.map((event) => (<tr className='table-elements'>
+      <td className='table-elements'><NavLink to={`/event/${event.id}`} className='table-elements'>{event?.name}</NavLink></td>
+      <td className='table-elements'>{event?.description}</td>
+      <td className='table-elements'>{event?.date}</td>
+      <td className='table-elements'>{event?.Category?.genre}</td>
+      <td className='table-elements'>{event?.Venue?.name}</td>
+      <td className='table-elements'>{event?.Venue?.city}</td>
+      <td className='table-elements'>{event?.Venue?.capacity}</td>
       </tr>))}
       </tbody>
       </table>
