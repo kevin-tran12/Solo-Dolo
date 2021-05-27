@@ -16,7 +16,6 @@ export default function EventPage() {
   const event = useSelector((state) => state.events.current);
   const userId = useSelector((state) => state.session.user.id);
   const eventId = parseInt(id);
-  const states = useSelector((state) => state);
 
   const [save, setSave] = useState(true);
   
