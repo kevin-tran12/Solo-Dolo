@@ -91,4 +91,16 @@ router.delete(
     const bookmark = await Bookmark.destroy({ where: { eventId, userId } });
   })
 );
+
+router.post(
+  "/:id/tickets",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    const { eventId, userId, price } = req.body;
+    const creating = { eventId, userId, price };
+    const ticket = await Ticket.create(creating);
+
+    return res.json(ticket);
+  })
+);
 module.exports = router;

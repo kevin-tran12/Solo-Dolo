@@ -10,6 +10,7 @@ import {
 import EventRow from "../EventRow";
 import PageNotFound from "../PageNotFound";
 import "./eventPage.css";
+import TicketFormModal from "../TicketPage";
 
 export default function EventPage() {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ export default function EventPage() {
   let userId;
   const eventId = parseInt(id);
   const [save, setSave] = useState(true);
-
+  const [modal, setModal] = useState(false);
   useEffect(() => {
     dispatch(getEvent(id));
   }, [dispatch, id]);
@@ -48,8 +49,9 @@ export default function EventPage() {
       return setSave(!save);
     }
   };
-  console.log(buttonText);
+
   if (!event) return null;
+
   return (
     <div className="container">
       <h1>{`Price $${event.Tickets[0].price}`}</h1>
@@ -69,9 +71,7 @@ export default function EventPage() {
           <EventRow key={event.id} event={event} />
           <tr className="table-elements button-container">
             <td>
-              <Link to="/purchase" className="table-elements">
-                <button className="buttons">Buy Tickets</button>
-              </Link>
+              <TicketFormModal />
               {save && (
                 <button className="buttons" onClick={() => saving()}>
                   Thinking about it? Save it!'
