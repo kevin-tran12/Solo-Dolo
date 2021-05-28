@@ -16,6 +16,7 @@
 td{
     border: 1px solid black;
     overflow-wrap: none;
+    background-color: #222;
 }
 
 th{
