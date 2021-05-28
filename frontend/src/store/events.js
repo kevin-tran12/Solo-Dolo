@@ -56,7 +56,6 @@ export const getBookmarks = id => async dispatch => {
 }
 
 export const deleteOneBookmark = payload => async dispatch => {
-  console.log('deleting',payload)
   const {userId, eventId} = payload
   const response = await csrfFetch(`/api/events/${eventId}/bookmarks`,{
     method: 'DELETE',

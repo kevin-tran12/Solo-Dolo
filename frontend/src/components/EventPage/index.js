@@ -48,7 +48,7 @@ export default function EventPage() {
       return setSave(!save);
     }
   };
-  console.log(buttonText);
+
   if (!event) return null;
   return (
     <div className="container">

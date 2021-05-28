@@ -15,7 +15,6 @@ export default function Event() {
 
   if(events.length ===0) return null
   if(!events[0].Category.genre) return null
-  console.log(events[0].Category.genre)
   let bool = events[0].Category.genre
   return (
     <div className="events">
